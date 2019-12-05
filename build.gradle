@@ -7,17 +7,25 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        includeEngines 'spek2'
+    }
 }
+
+ext.spek_version = "2.0.8"
+ext.atrium_version="0.9.0-alpha"
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.3.2'
+    testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect"
 
-    testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.29'
+    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spek_version"
+    testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:$spek_version"
+    testImplementation "ch.tutteli.atrium:atrium-fluent-en_GB:$atrium_version"
 }
 
 compileKotlin {
