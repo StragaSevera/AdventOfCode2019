@@ -2,20 +2,20 @@ package ru.ought.advent_of_code_2019
 
 object Day02First {
     private const val OP_SIZE = 4
-    fun calculate(programInput: List<Int>): List<Int> {
-        val program = programInput.toMutableList()
-        loop@ for (i in 0 until program.size step OP_SIZE) {
-            when (program[i]) {
-                1 -> mutateListAt(program, i) { a, b -> a + b }
-                2 -> mutateListAt(program, i) { a, b -> a * b }
+    fun calculate(program: List<Int>): List<Int> {
+        val memory = program.toMutableList()
+        loop@ for (i in 0 until memory.size step OP_SIZE) {
+            when (memory[i]) {
+                1 -> operate(memory, i) { a, b -> a + b }
+                2 -> operate(memory, i) { a, b -> a * b }
                 else -> break@loop
             }
         }
-        return program
+        return memory
     }
 
-    private fun mutateListAt(program: MutableList<Int>, address: Int, operation: (Int, Int) -> Int) {
-        program.apply {
+    private fun operate(memory: MutableList<Int>, address: Int, operation: (Int, Int) -> Int) {
+        memory.apply {
             setValueAt(
                 address + 3,
                 operation(getValueAt(address + 1), getValueAt(address + 2))

@@ -21,10 +21,10 @@ object Day02FirstTest : Spek({
                     listOf(1, 9, 10, 3, 2, 3, 11, 0, 99, 30, 40, 50),
                     listOf(3500, 9, 10, 70, 2, 3, 11, 0, 99, 30, 40, 50)
                 )
-            ).forEach { (program: List<Int>, correctResult: List<Int>) ->
+            ).forEach { (program: List<Int>, memory: List<Int>) ->
                 it(program.toString()) {
                     val result = Day02First.calculate(program)
-                    expect(result).toBe(correctResult)
+                    expect(result).toBe(memory)
                 }
             }
         }
