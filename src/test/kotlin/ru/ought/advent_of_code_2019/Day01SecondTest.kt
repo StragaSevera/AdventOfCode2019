@@ -14,9 +14,9 @@ object Day01SecondTest : Spek({
                 FuelCase(14, 2),
                 FuelCase(1969, 966),
                 FuelCase(100756, 50346)
-            ).forEach { case ->
-                it(case.toString()) {
-                    val (mass, fuel) = case
+            ).forEach {
+                it(it.toString()) {
+                    val (mass, fuel) = it
                     expect(Day01Second.fuel(mass)).toBe(fuel)
                 }
             }
