@@ -9,11 +9,10 @@ import ch.tutteli.atrium.api.verbs.expect
 object Day01SecondTest : Spek({
     describe("Day 01 Second Task") {
         context("gets valid fuel") {
-            data class FuelCase(val mass: Int, val fuel: Int)
             listOf(
-                FuelCase(14, 2),
-                FuelCase(1969, 966),
-                FuelCase(100756, 50346)
+                14 to 2,
+                1969 to 966,
+                100756 to 50346
             ).forEach {
                 it(it.toString()) {
                     val (mass, fuel) = it

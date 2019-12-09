@@ -9,12 +9,11 @@ import ch.tutteli.atrium.api.verbs.expect
 object Day01FirstTest : Spek({
     describe("Day 01 First Task") {
         context("gets valid fuel") {
-            data class FuelCase(val mass: Int, val fuel: Int)
             listOf(
-                FuelCase(12, 2),
-                FuelCase(14, 2),
-                FuelCase(1969, 654),
-                FuelCase(100756, 33583)
+                12 to 2,
+                14 to 2,
+                1969 to 654,
+                100756 to 33583
             ).forEach { case ->
                 it(case.toString()) {
                     val (mass, fuel) = case
