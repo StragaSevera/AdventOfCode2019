@@ -1,20 +1,26 @@
 package ru.ought.advent_of_code_2019.day_03
 
+import kotlin.math.abs
+
 data class Segment(val p1: Point, val p2: Point) {
-    private val isVertical: Boolean
-        get() = p2.x - p1.x == 0
-    private val isHorizontal: Boolean
-        get() = p2.y - p1.y == 0
-
-    private val xRange: IntRange
-        get() = minOf(p1.x, p2.x)..maxOf(p1.x, p2.x)
-    private val yRange: IntRange
-        get() = minOf(p1.y, p2.y)..maxOf(p1.y, p2.y)
-
     init {
         if (!isVertical && !isHorizontal)
             throw IllegalArgumentException()
     }
+
+    val length: Int
+        get() = abs(p2.x - p1.x) + abs(p2.y - p1.y)
+
+    private val isVertical: Boolean
+        get() = p2.x - p1.x == 0
+
+    private val isHorizontal: Boolean
+        get() = p2.y - p1.y == 0
+    private val xRange: IntRange
+        get() = minOf(p1.x, p2.x)..maxOf(p1.x, p2.x)
+
+    private val yRange: IntRange
+        get() = minOf(p1.y, p2.y)..maxOf(p1.y, p2.y)
 
     fun getIntersection(segment: Segment): Point? {
         if ((isVertical && segment.isVertical) ||
@@ -42,15 +48,9 @@ data class Segment(val p1: Point, val p2: Point) {
                 return result
         }
         return null
-
     }
-}
 
-fun parseSegments(segmentString: String): List<Segment> {
-    var currentPoint = Point(0, 0)
-    return segmentString.split(',').map { str ->
-        Segment(
-            currentPoint,
-            currentPoint.move(str).also { currentPoint = it })
+    fun distanceFromStartTo(point: Point): Int {
+        return Segment(p1, point).length
     }
 }

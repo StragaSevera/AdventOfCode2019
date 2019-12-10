@@ -25,7 +25,7 @@ object PointTest : Spek({
         }
 
         context("cannot illegaly move point") {
-            listOf("F5", "L1.01", "R2D2").forEach {
+            listOf("F5", "L1.01", "R2D2", "", " ").forEach {
                 it(it) {
                     expect {Point(10, -5).move(it)}.toThrow<IllegalArgumentException>()
                 }

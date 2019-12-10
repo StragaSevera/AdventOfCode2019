@@ -4,7 +4,10 @@ import kotlin.math.abs
 
 data class Point(val x: Int, val y: Int) {
     fun move(vector: String): Point {
-        val (direction, distance) = vector[0] to (vector.drop(1).toIntOrNull() ?: throw IllegalArgumentException())
+        require(vector.isNotBlank())
+        val (direction, distance) = vector[0] to vector.drop(1).toIntOrNull()
+        requireNotNull(distance)
+
         return when (direction) {
             'R' -> Point(x + distance, y)
             'L' -> Point(x - distance, y)
@@ -16,6 +19,7 @@ data class Point(val x: Int, val y: Int) {
 
     operator fun plus(p: Point): Point =
         Point(x + p.x, y + p.y)
+
     operator fun minus(p: Point): Point =
         Point(x - p.x, y - p.y)
 

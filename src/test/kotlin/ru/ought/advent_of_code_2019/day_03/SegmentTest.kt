@@ -26,14 +26,14 @@ object SegmentTest : Spek({
             }
         }
 
-        it("parses segments to list") {
-            val list = parseSegments("R8,U5,L5,D3")
-            expect(list).toBe(listOf(
-                Segment(Point(0, 0), Point(8, 0)),
-                Segment(Point(8, 0), Point(8, 5)),
-                Segment(Point(8, 5), Point(3, 5)),
-                Segment(Point(3, 5), Point(3, 2))
-            ))
+        it("can get length") {
+            val sut = Segment(Point(8, -4), Point(8, 5))
+            expect(sut.length).toBe(9)
+        }
+
+        it("can get distance from first point to another point") {
+            val sut = Segment(Point(8, -4), Point(8, 5))
+            expect(sut.distanceFromStartTo(Point(8, -1))).toBe(3)
         }
     }
 })
