@@ -10,8 +10,8 @@ import java.lang.IllegalArgumentException
 object WireTest : Spek({
     describe("Wire") {
         it("parses segments to list") {
-            val wire = Wire("R8,U5,L5,D3")
-            expect(wire.segments).toBe(listOf(
+            val wire = parseWire("R8,U5,L5,D3")
+            expect(wire).toBe(listOf(
                 Segment(Point(0, 0), Point(8, 0)),
                 Segment(Point(8, 0), Point(8, 5)),
                 Segment(Point(8, 5), Point(3, 5)),

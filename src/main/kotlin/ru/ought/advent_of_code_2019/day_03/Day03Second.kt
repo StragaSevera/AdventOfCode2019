@@ -2,7 +2,7 @@ package ru.ought.advent_of_code_2019.day_03
 
 object Day03Second {
     fun nearestIntersectionSteps(wires: String): Int {
-        val (firstWire, secondWire) = wires.split('\n').map(::Wire).map(Wire::segments)
+        val (firstWire, secondWire) = wires.split('\n').map(::parseWire)
         require(firstWire.isNotEmpty())
         require(secondWire.isNotEmpty())
 
