@@ -1,8 +1,12 @@
-package ru.ought.advent_of_code_2019
+package ru.ought.advent_of_code_2019.day_01
 
 object Day01Second {
     fun fuel(mass: Int): Int {
-        val fuelValues = generateSequence(mass) { fuelIteration(it) }
+        val fuelValues = generateSequence(mass) {
+            fuelIteration(
+                it
+            )
+        }
         return fuelValues.drop(1).takeWhile { it > 0 }.sum()
     }
 
@@ -12,7 +16,7 @@ object Day01Second {
 
     fun fuelFor(str: String): Int {
         return str.trim().split("\\s+".toRegex())
-            .map { it.toInt() }.map(::fuel)
+            .map { it.toInt() }.map(Day01Second::fuel)
             .sum()
     }
 }

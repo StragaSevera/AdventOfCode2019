@@ -1,4 +1,4 @@
-package ru.ought.advent_of_code_2019
+package ru.ought.advent_of_code_2019.day_02
 
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe

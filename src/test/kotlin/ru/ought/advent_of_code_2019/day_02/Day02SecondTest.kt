@@ -1,10 +1,10 @@
-package ru.ought.advent_of_code_2019
+package ru.ought.advent_of_code_2019.day_02
 
 import ch.tutteli.atrium.api.fluent.en_GB.isGreaterOrEquals
-import ch.tutteli.atrium.api.fluent.en_GB.isGreaterThan
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 import ch.tutteli.atrium.api.verbs.expect
+import ru.ought.advent_of_code_2019.day_02.Day02Second
 
 object Day02SecondTest : Spek({
     describe("Day 02 Second Task") {

@@ -1,4 +1,4 @@
-package ru.ought.advent_of_code_2019
+package ru.ought.advent_of_code_2019.day_03
 
 import kotlin.math.abs
 
@@ -14,8 +14,10 @@ data class Point(val x: Int, val y: Int) {
         }
     }
 
-    operator fun plus(p: Point): Point = Point(x + p.x, y + p.y)
-    operator fun minus(p: Point): Point = Point(x - p.x, y - p.y)
+    operator fun plus(p: Point): Point =
+        Point(x + p.x, y + p.y)
+    operator fun minus(p: Point): Point =
+        Point(x - p.x, y - p.y)
 
     val dist: Int
         get() = abs(x) + abs(y)
@@ -85,7 +87,9 @@ object Day03First {
     private fun List<String>.toWires(): List<Segment> {
         var currentPoint = Point(0, 0)
         return map { str ->
-            Segment(currentPoint, currentPoint.move(str).also { currentPoint = it })
+            Segment(
+                currentPoint,
+                currentPoint.move(str).also { currentPoint = it })
         }
     }
 

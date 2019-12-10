@@ -1,4 +1,4 @@
-package ru.ought.advent_of_code_2019
+package ru.ought.advent_of_code_2019.day_02
 
 object Day02First {
     private const val OP_SIZE = 4
@@ -6,8 +6,14 @@ object Day02First {
         val memory = program.toMutableList()
         loop@ for (i in 0 until memory.size step OP_SIZE) {
             when (memory[i]) {
-                1 -> operate(memory, i) { a, b -> a + b }
-                2 -> operate(memory, i) { a, b -> a * b }
+                1 -> operate(
+                    memory,
+                    i
+                ) { a, b -> a + b }
+                2 -> operate(
+                    memory,
+                    i
+                ) { a, b -> a * b }
                 else -> break@loop
             }
         }

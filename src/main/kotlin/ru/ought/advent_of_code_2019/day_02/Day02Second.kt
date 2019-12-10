@@ -1,4 +1,4 @@
-package ru.ought.advent_of_code_2019
+package ru.ought.advent_of_code_2019.day_02
 
 object Day02Second {
     fun findMatchingInputs(input: List<Int>, output: Int): Int {
